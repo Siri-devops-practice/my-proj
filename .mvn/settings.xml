@@ -1,0 +1,37 @@
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+    <!-- Optional local repo, uncomment if you want a custom location -->
+    <!--
+    <localRepository>${user.home}/.m2/repository</localRepository>
+    -->
+
+    <interactiveMode>false</interactiveMode>
+
+    <mirrors>
+        <!-- Example mirror, uncomment or replace if needed for your network -->
+        <!--
+        <mirror>
+            <id>central</id>
+            <name>Maven Central Mirror</name>
+            <url>https://repo.maven.apache.org/maven2</url>
+            <mirrorOf>central</mirrorOf>
+        </mirror>
+        -->
+    </mirrors>
+
+    <profiles>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+            </properties>
+        </profile>
+    </profiles>
+
+</settings>

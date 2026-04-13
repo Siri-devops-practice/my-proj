@@ -1,0 +1,320 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --love-color: #ff5c8a;
+    --love-strong: #c73862;
+    --love-soft: #ffbed6;
+    --heart-color: #ff1744;
+    --bg-gradient-1: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    --bg-gradient-2: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--bg-gradient-1);
+    color: #333;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-gradient-2);
+    z-index: -1;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        background: var(--bg-gradient-1);
+    }
+    50% {
+        background: var(--bg-gradient-2);
+    }
+}
+
+.container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    animation: slideDown 0.8s ease;
+}
+
+.header h1 {
+    font-size: 3.5em;
+    color: white;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.header .subtitle {
+    font-size: 1.2em;
+    color: rgba(255, 255, 255, 0.9);
+    font-style: italic;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.main-content {
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+    max-width: 900px;
+}
+
+.message-box {
+    width: 250px;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    border: 3px solid white;
+    animation: popIn 0.8s ease 0.2s both;
+}
+
+.message-box::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0);
+    transition: background 0.3s ease;
+    z-index: 0;
+}
+
+.message-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+}
+
+.message-box:active {
+    transform: translateY(-5px) scale(0.98);
+}
+
+@keyframes popIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.sorry-box {
+    background: linear-gradient(135deg, #ff5c8a 0%, #ff9ed4 100%);
+    color: white;
+}
+
+.miss-box {
+    background: linear-gradient(135deg, #c73862 0%, #ff91b8 100%);
+    color: white;
+}
+
+.box-inner {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.emoji-display {
+    font-size: 4em;
+    margin-bottom: 15px;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+.message-box h2 {
+    font-size: 1.8em;
+    margin: 10px 0;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.hint {
+    font-size: 0.9em;
+    margin-top: 10px;
+    opacity: 0.9;
+    font-style: italic;
+}
+
+.message-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    animation: popupAppear 0.5s ease;
+    max-width: 90%;
+}
+
+@keyframes popupAppear {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+.popup-content {
+    text-align: center;
+}
+
+.popup-content p {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin: 20px 0;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.heart {
+    font-size: 2em;
+    margin: 0 5px;
+    display: inline-block;
+    animation: heartBeat 0.6s ease infinite;
+}
+
+.heart:nth-child(1) { animation-delay: 0s; }
+.heart:nth-child(2) { animation-delay: 0.1s; }
+.heart:nth-child(3) { animation-delay: 0.2s; }
+.heart:nth-child(4) { animation-delay: 0.3s; }
+.heart:nth-child(5) { animation-delay: 0.4s; }
+.heart:nth-child(6) { animation-delay: 0.5s; }
+.heart:nth-child(7) { animation-delay: 0.6s; }
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+.message-popup.hidden {
+    display: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+    display: none;
+}
+
+.overlay.active {
+    display: block;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    color: white;
+    font-size: 1.1em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2em;
+    }
+
+    .main-content {
+        gap: 20px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .message-box {
+        width: 200px;
+        height: 250px;
+    }
+
+    .emoji-display {
+        font-size: 3em;
+    }
+
+    .message-box h2 {
+        font-size: 1.4em;
+    }
+
+    .popup-content p {
+        font-size: 1.8em;
+    }
+}
+
+/* Close popup on escape key via JavaScript */
+body.popup-active {
+    overflow: hidden;
+}

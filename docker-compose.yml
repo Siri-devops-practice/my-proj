@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  message-service:
+    build:
+      context: .
+      dockerfile: message-service/Dockerfile
+    ports:
+      - "8081:8081"
+    networks:
+      - emotion-network
+
+  user-service:
+    build:
+      context: .
+      dockerfile: user-service/Dockerfile
+    ports:
+      - "8082:8082"
+    networks:
+      - emotion-network
+
+  ui-service:
+    build:
+      context: .
+      dockerfile: ui-service/Dockerfile
+    ports:
+      - "8083:8083"
+    depends_on:
+      - message-service
+      - user-service
+    networks:
+      - emotion-network
+
+networks:
+  emotion-network:
+    driver: bridge

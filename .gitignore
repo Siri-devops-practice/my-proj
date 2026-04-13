@@ -1,0 +1,22 @@
+.gitignore content:
+
+target/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
+*.log
+.DS_Store
+*.class
+*.jar
+*.war
+.env
+node_modules/
+dist/
+build/
+*.swp
+*.swo
+*~
+.m2/
