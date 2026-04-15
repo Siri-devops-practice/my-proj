@@ -7,8 +7,8 @@ COPY . .
 # Build the application
 RUN mvn clean package -DskipTests -pl user-service -am
 
-# Use OpenJDK 11 JRE for runtime
-FROM openjdk:11-jre-slim
+# Use Eclipse Temurin 11 JRE for runtime
+FROM eclipse-temurin:11-jre-jammy
 WORKDIR /app
 # Copy the built JAR from the build stage
 COPY --from=build /app/user-service/target/*.jar app.jar
