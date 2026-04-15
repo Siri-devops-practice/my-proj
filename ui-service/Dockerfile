@@ -2,13 +2,12 @@
 FROM maven:3.8.4-openjdk-11-slim AS build
 
 # Copy the parent pom.xml
-COPY pom.xml /app/pom.xml
+COPY pom.xml .
 
 # Copy the service pom.xml
-COPY ui-service/pom.xml /app/ui-service/pom.xml
+COPY ui-service ui-service
 
-# Copy source code
-COPY ui-service/src /app/ui-service/src
+
 
 # Set working directory
 WORKDIR /app

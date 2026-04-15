@@ -2,13 +2,11 @@
 FROM maven:3.8.4-openjdk-11-slim AS build
 
 # Copy the parent pom.xml
-COPY pom.xml /app/pom.xml
+COPY pom.xml .
 
 # Copy the service pom.xml
-COPY user-service/pom.xml /app/user-service/pom.xml
+COPY user-service user-service
 
-# Copy source code
-COPY user-service/src /app/user-service/src
 
 # Set working directory
 WORKDIR /app

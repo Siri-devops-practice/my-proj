@@ -2,13 +2,12 @@
 FROM maven:3.8.4-openjdk-11-slim AS build
 
 # Copy the parent pom.xml
-COPY pom.xml /app/pom.xml
+COPY pom.xml .
 
 # Copy the service pom.xml
-COPY message-service/pom.xml /app/message-service/pom.xml
+COPY message-service message-service
 
-# Copy source code
-COPY message-service/src /app/message-service/src
+
 
 # Set working directory
 WORKDIR /app
