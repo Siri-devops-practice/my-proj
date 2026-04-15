@@ -1,16 +1,8 @@
 # Use Maven with OpenJDK 11 for building
 FROM maven:3.8.4-openjdk-11-slim AS build
 WORKDIR /app
-# Copy the parent pom.xml
-COPY pom.xml .
-
-# Copy the service pom.xml
-COPY message-service message-service
-
-
-
-# Set working directory
-
+# Copy the entire project
+COPY . .
 
 # Build the application
 RUN mvn clean package -DskipTests -pl message-service -am
